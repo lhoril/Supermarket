@@ -8,8 +8,6 @@ namespace Supermarket
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine('\u20AC');
-
-
         }
     }
 }

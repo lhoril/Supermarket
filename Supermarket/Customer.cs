@@ -10,20 +10,14 @@ namespace Supermarket
     {
         private int? _fidelity_card;
 
+
         #region Constructors
-        public Customer(string id, string fullNaime, int? fidelityCard)
+        public Customer(string id, string fullName, int? fidelityCard) : base(id, fullName)
         {
-            _id = id;
-            _fullName = fullNaime;
-            fidelityCard = 0;
-            active = false;
-
+            _fidelity_card = fidelityCard;
         }
 
-        public override double GetRating()
-        {
-
-        }
+        public override int GetRating => throw new NotImplementedException();
 
         public override void AddPoints(int points)
         {
@@ -32,7 +26,7 @@ namespace Supermarket
 
         public override string ToString()
         {
-            return $"DNI/NIE-> {_id} ";
+            return $"DNI/NIE-> {base._id} ";
         }
         #endregion
     }
