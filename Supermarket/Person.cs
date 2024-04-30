@@ -65,7 +65,9 @@ namespace Supermarket
 
         public int CompareTo(Person? other)
         {
-            throw new NotImplementedException();
+            int resultat = 0;
+            resultat = this._points - other._points;
+            return resultat;
         }
     }
 }
