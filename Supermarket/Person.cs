@@ -8,10 +8,10 @@ namespace Supermarket
 {
     public abstract class Person : IComparable<Person>
     {
-        private string _id;
+        protected string _id;
         private string _fullname;
         private int _points;
-        private double _totalInvoiced;
+        protected double _totalInvoiced;
         private bool active;
 
         protected Person(string id, string fullName, int points)
