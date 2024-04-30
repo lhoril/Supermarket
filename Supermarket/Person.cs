@@ -21,7 +21,6 @@ namespace Supermarket
             _points = points;
             _totalInvoiced = 0;
             active = false;
-
         }
 
         protected Person(string id, string fullName)
