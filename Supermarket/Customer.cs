@@ -11,13 +11,9 @@ namespace Supermarket
         private int? _fidelity_card;
 
         #region Constructors
-        public Customer(string id, string fullNaime, int? fidelityCard)
+        public Customer(string id, string fullName, int? fidelityCard) : base(id, fullName)
         {
-            _id = id;
-            _fullName = fullNaime;
-            fidelityCard = 0;
-            active = false;
-
+            _fidelity_card = fidelityCard;
         }
 
         public override double GetRating()
@@ -32,7 +28,7 @@ namespace Supermarket
 
         public override string ToString()
         {
-            return $"DNI/NIE-> {_id} ";
+            return $"DNI/NIE-> {base._id} NOM-> {base._fullname} RETING-> {} VENDES-> {base.} PUNTS -> {base._points} DISPONIBLE ->{base.active} ";
         }
         #endregion
     }
