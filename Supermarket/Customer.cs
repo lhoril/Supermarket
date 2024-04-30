@@ -17,6 +17,7 @@ namespace Supermarket
             _fullName = fullNaime;
             fidelityCard = 0;
             active = false;
+
         }
 
         public override double GetRating()
