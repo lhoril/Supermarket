@@ -10,7 +10,7 @@ namespace Supermarket
     {
         protected string _id;
         private string _fullname;
-        private int _points;
+        protected int _points;
         protected double _totalInvoiced;
         private bool active;
 
@@ -54,12 +54,12 @@ namespace Supermarket
             return $"DISPONIBLE -> {disponible}";
         }
 
-        public abstract int GetRating
+        public abstract double GetRating
         {
             get;
         }
 
-        public abstract int AddPoints(int pointsToAdd);
+        public abstract void AddPoints(int pointsToAdd);
         
 
         public int CompareTo(Person? other)
