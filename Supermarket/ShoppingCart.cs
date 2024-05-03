@@ -13,6 +13,7 @@ namespace Supermarket
         public ShoppingCart(string FileName)
         {
             StreamReader sr = new StreamReader(FileName);
+            cart = new Dictionary<Item, double>();
             string line;
             line = sr.ReadLine();
             string[] camps;
@@ -22,6 +23,7 @@ namespace Supermarket
                 num++;
                 camps = line.Split(';');
                 Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
+                cart.Add(producte, num);
             }
         }
     }
