@@ -10,21 +10,13 @@ namespace Supermarket
     {
         private Dictionary<Item, double> cart;
 
-        public ShoppingCart(string FileName)
+        public ShoppingCart(int num, string linia)
         {
-            StreamReader sr = new StreamReader(FileName);
             cart = new Dictionary<Item, double>();
-            string line;
-            line = sr.ReadLine();
             string[] camps;
-            int num = 0;
-            while (line != null)
-            {
-                num++;
-                camps = line.Split(';');
-                Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
-                cart.Add(producte, num);
-            }
+            camps = linia.Split(';');   
+            Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
+            cart.Add(producte, num);
         }
     }
 }
