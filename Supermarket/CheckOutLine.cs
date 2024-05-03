@@ -27,6 +27,7 @@ namespace Supermarket
             {
                 num++;
                 camps = line.Split(';');
+                line = sr.ReadLine();
                 Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
                 this.queue.Append(new ShoppingCart(num, line));
             }
