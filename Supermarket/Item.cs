@@ -21,15 +21,15 @@ namespace Supermarket
         private double stock;
         private int minStock;
 
-        public Item(int code, string description, bool onSale, double price, Category category, Packaging package, double stock, int minStock)
+        public Item(int code, string description, bool onSale, double price, int category, char type, double stock, int minStock)
         {
             if (stock <= minStock) throw new Exception("THE QUANTITY IN STOCK CAN'T BE EQUALS OR LOWEST OF MINSTOCK");
             this.code = code;
             this.description = description;
             this.onSale = onSale;
             this.price = price;
-            this.category = category;
-            this.packaging = package;
+            this.category = (Category)category;
+            this.packaging = (Packaging)type;
             this.stock = stock;
             this.minStock = minStock;
         }

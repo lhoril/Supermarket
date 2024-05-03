@@ -17,7 +17,7 @@ namespace Supermarket
             _fidelity_card = fidelityCard;
         }
 
-        public override int GetRating => throw new NotImplementedException();
+        public override double GetRating => throw new NotImplementedException();
 
         public override void AddPoints(int points)
         {
