@@ -22,7 +22,10 @@ namespace Supermarket
 
         public override double GetRating
         {
-            get { return (YearsOfService * 360) + (_totalInvoiced * 0.10); }
+            get {
+                DateTime dateNow = DateTime.Now;
+                TimeSpan Interval = _joiningDate - dateNow;
+                return Interval.Days + (_totalInvoiced * 0.10); }
         }
 
         public override void AddPoints(int pointsToAdd)
