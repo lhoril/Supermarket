@@ -17,12 +17,12 @@ namespace Supermarket
         private Dictionary<string, Person> customer;
         private SortedDictionary<int, Item> warehouse;
 
-        public Supermarket(string name, string address, string fileCashiers, string fileCustomers, string fileItems, int activeLines)
+        public Suppermarket(string name, string address, string fileCashiers, string fileCustomers, string fileItems, int activeLines)
         {
             this.name = name;
             this.address = address;
             this.activeLines = activeLines;
-            this.staff = LoadCashiers();
+            this.staff = LoadCashiers(fileCashiers);
             this.customer = LoadCustomers();
             this.warehouse = LoadWarehouse();
         }
@@ -30,6 +30,7 @@ namespace Supermarket
         private Dictionary<string, Person> LoadCashiers(string fileName)
         {
             StreamReader sr = new StreamReader(fileName);
+            Dictionary<string, Person> persones = new Dictionary<string, Person>();
             string line;
             line = sr.ReadLine();
             string[] camps;
@@ -37,13 +38,27 @@ namespace Supermarket
             {
                 camps = line.Split(';');
                 line = sr.ReadLine();
-                Person person = new Cashier(camps[0], camps[1], Convert.T);
+                Person person = new Cashier(camps[0], camps[1], Convert.ToInt32(camps[3]));
+                persones.Add(camps[0],person);
             }
+            return persones;
         }
 
-        private Dictionary<string, Person>? LoadCustomers()
+        private Dictionary<string, Person>? LoadCustomers(string fileName)
         {
-            throw new NotImplementedException();
+            StreamReader sr = new StreamReader(fileName);
+            Dictionary<string, Person> persones = new Dictionary<string, Person>();
+            string line;
+            line = sr.ReadLine();
+            string[] camps;
+            while (line != null)
+            {
+                camps = line.Split(';');
+                line = sr.ReadLine();
+                Person person = new Customer(camps[0], camps[1], Convert.ToInt32(camps[3]));
+                persones.Add(camps[0], person);
+            }
+            return persones;
         }
 
         private SortedDictionary<int, Item>? LoadWarehouse()
