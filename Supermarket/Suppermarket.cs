@@ -23,7 +23,7 @@ namespace Supermarket
             this.address = address;
             this.activeLines = activeLines;
             this.staff = LoadCashiers(fileCashiers);
-            this.customer = LoadCustomers();
+            this.customer = LoadCustomers(fileCustomers);
             this.warehouse = LoadWarehouse();
         }
 
@@ -44,7 +44,7 @@ namespace Supermarket
             return persones;
         }
 
-        private Dictionary<string, Person>? LoadCustomers(string fileName)
+        private Dictionary<string, Person> LoadCustomers(string fileName)
         {
             StreamReader sr = new StreamReader(fileName);
             Dictionary<string, Person> persones = new Dictionary<string, Person>();
