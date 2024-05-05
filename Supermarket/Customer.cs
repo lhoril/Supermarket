@@ -10,13 +10,13 @@ namespace Supermarket
     {
         private int? _fidelity_card;
 
-
         #region Constructors
         public Customer(string id, string fullName, int? fidelityCard) : base(id, fullName)
         {
             _fidelity_card = fidelityCard;
         }
         #endregion
+
         public override double GetRating
         {
             get
@@ -24,11 +24,11 @@ namespace Supermarket
                 return 0.02 * _totalInvoiced;
             }
         }
-        public override void AddPoints(int pointsToAdd)
+        public override void AddPoints(int points)
         {
             if (_fidelity_card != null)
             {
-                _points += pointsToAdd;
+                _points += points;
             }
             else
             {
