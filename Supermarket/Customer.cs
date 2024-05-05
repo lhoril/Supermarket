@@ -16,7 +16,7 @@ namespace Supermarket
         {
             _fidelity_card = fidelityCard;
         }
-
+        #endregion
         public override double GetRating
         {
             get
@@ -40,6 +40,6 @@ namespace Supermarket
         {
             return $"DNI/NIE -> {base._id} NOM -> {base.FullName} RATING -> {GetRating}  VENDES -> {_totalInvoiced} PUNTS -> {_points} DISPONIBLE -> {base.ToString}";
         }
-        #endregion
+        
     }
 }
