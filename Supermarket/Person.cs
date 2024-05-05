@@ -14,6 +14,7 @@ namespace Supermarket
         protected double _totalInvoiced;
         private bool active;
 
+        #region Constructors
         protected Person(string id, string fullName, int points)
         {
             _id = id;
@@ -29,7 +30,9 @@ namespace Supermarket
             _fullname = fullName;
             _points = 0;
         }
+        #endregion
 
+        #region propietats
         public string FullName
         {
             get { return _fullname; }
@@ -40,6 +43,7 @@ namespace Supermarket
             get { return active; }
             set { active = value; }
         }
+        #endregion
 
         public void AddInvoiceAmount(double amount)
         {
