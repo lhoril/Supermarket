@@ -16,18 +16,30 @@ namespace Supermarket
         {
             _fidelity_card = fidelityCard;
         }
-
-        public override double GetRating => throw new NotImplementedException();
-
-        public override void AddPoints(int points)
+        #endregion
+        public override double GetRating
         {
-
+            get
+            {
+                return 0.02 * _totalInvoiced;
+            }
+        }
+        public override void AddPoints(int pointsToAdd)
+        {
+            if (_fidelity_card != null)
+            {
+                _points += pointsToAdd;
+            }
+            else
+            {
+                Console.WriteLine("No tens fidelity card, no s'afegeixen punts!");
+            }
         }
 
         public override string ToString()
         {
-            return $"DNI/NIE-> {base._id} ";
+            return $"DNI/NIE -> {base._id} NOM -> {base.FullName} RATING -> {GetRating}  VENDES -> {_totalInvoiced} PUNTS -> {_points} DISPONIBLE -> {base.ToString}";
         }
-        #endregion
+        
     }
 }
