@@ -37,14 +37,14 @@ namespace Supermarket
             while (line != null)
             {
                 camps = line.Split(';');
-                line = sr.ReadLine();
-                Person person = new Cashier(camps[0], camps[1], Convert.ToInt32(camps[3]));
+                Person person = new Cashier(camps[0], camps[1], Convert.ToInt32(camps[2]));
                 persones.Add(camps[0],person);
+                line = sr.ReadLine();
             }
             return persones;
         }
 
-        private Dictionary<string, Person> LoadCustomers(string fileName)
+        private Dictionary<string, Person> LoadCustomers(string fileName) //ERROR
         {
             StreamReader sr = new StreamReader(fileName);
             Dictionary<string, Person> persones = new Dictionary<string, Person>();
@@ -55,13 +55,13 @@ namespace Supermarket
             {
                 camps = line.Split(';');
                 line = sr.ReadLine();
-                Person person = new Customer(camps[0], camps[1], Convert.ToInt32(camps[3]));
+                Person person = new Customer(camps[0], camps[1], Convert.ToInt32(camps[2]));
                 persones.Add(camps[0], person);
             }
             return persones;
         }
 
-        private SortedDictionary<int, Item> LoadWarehouse(string fileName)
+        private SortedDictionary<int, Item> LoadWarehouse(string fileName) //ERROR
         {
             StreamReader sr = new StreamReader (fileName);
             SortedDictionary<int, Item> items = new SortedDictionary<int, Item>();
@@ -79,6 +79,5 @@ namespace Supermarket
             }
             return items;
         }
-
     }
 }
