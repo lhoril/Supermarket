@@ -50,11 +50,13 @@ namespace Supermarket
             Dictionary<string, Person> persones = new Dictionary<string, Person>();
             string line;
             line = sr.ReadLine();
+            line = sr.ReadLine();
             string[] camps;
             while (line != null)
             {
                 camps = line.Split(';');
                 line = sr.ReadLine();
+                if (camps[2] == "") camps[2] = null;
                 Person person = new Customer(camps[0], camps[1], Convert.ToInt32(camps[2]));
                 persones.Add(camps[0], person);
             }
@@ -73,7 +75,7 @@ namespace Supermarket
             {
                 camps = line.Split(";");
                 line = sr.ReadLine();
-                Item item = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
+                Item item = new Item(num, camps[0], false, Convert.ToDouble(camps[3]), Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), 14, 10);
                 num++;
                 items.Add(num, item);
             }
