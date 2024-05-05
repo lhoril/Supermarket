@@ -24,7 +24,7 @@ namespace Supermarket
             this.activeLines = activeLines;
             this.staff = LoadCashiers(fileCashiers);
             this.customer = LoadCustomers(fileCustomers);
-            this.warehouse = LoadWarehouse();
+            this.warehouse = LoadWarehouse(fileItems);
         }
 
         private Dictionary<string, Person> LoadCashiers(string fileName)
@@ -61,9 +61,23 @@ namespace Supermarket
             return persones;
         }
 
-        private SortedDictionary<int, Item>? LoadWarehouse()
+        private SortedDictionary<int, Item> LoadWarehouse(string fileName)
         {
-            throw new NotImplementedException();
+            StreamReader sr = new StreamReader (fileName);
+            SortedDictionary<int, Item> items = new SortedDictionary<int, Item>();
+            string line;
+            line = sr.ReadLine();
+            string[] camps;
+            int num=0;
+            while (line != null)
+            {
+                camps = line.Split(";");
+                line = sr.ReadLine();
+                Item item = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
+                num++;
+                items.Add(num, item);
+            }
+            return items;
         }
 
     }
