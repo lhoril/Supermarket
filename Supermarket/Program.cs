@@ -18,7 +18,6 @@ namespace Supermarket
             Console.WriteLine("Informació del client:");
             Console.WriteLine(customer.ToString());
 
-
             Console.WriteLine("Informació del caixer:");
             Console.WriteLine(cashier.ToString());
         }
