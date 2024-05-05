@@ -60,7 +60,9 @@ namespace Supermarket
 
         public int CompareTo(Item? other)
         {
-            throw new NotImplementedException();
+            int resultat = 0;
+            resultat = other.description.Length - this.description.Length;
+            return resultat;
         }
     }
 }
