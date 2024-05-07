@@ -27,27 +27,27 @@ namespace Supermarket
             get { return dateOfPurchase; }
         }
 
-        //public ShoppingCart(int num, string linia)
-        //{
-        //    shoppingList = new Dictionary<Item, double>();
-        //    string[] camps;
-        //    camps = linia.Split(';');   
-        //    Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
-        //    shoppingList.Add(producte, num);
-        //}
-
-        public ShoppingCart(Customer customer, DateTime dateOfPurchase)
+        public ShoppingCart(int num, string linia)
         {
-            this.customer = customer;
-            this.dateOfPurchase = dateOfPurchase;
-            customer.Active = true;
-
-            string linia = "";
             shoppingList = new Dictionary<Item, double>();
             string[] camps;
-            //camps = linia.Split(';');
-            //Item producte = new Item()
+            camps = linia.Split(';');
+            Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
+            shoppingList.Add(producte, num);
         }
+
+        //public ShoppingCart(Customer customer, DateTime dateOfPurchase)
+        //{
+        //    this.customer = customer;
+        //    this.dateOfPurchase = dateOfPurchase;
+        //    customer.Active = true;
+
+        //    string linia = "";
+        //    shoppingList = new Dictionary<Item, double>();
+        //    string[] camps;
+        //    //camps = linia.Split(';');
+        //    //Item producte = new Item()
+        //}
         public void AddOne(Item item, double qty)
         {
 
