@@ -64,7 +64,13 @@ namespace Supermarket
 
         public override bool Equals(object? obj)
         {
-            return base.Equals(obj);
+            if (obj == null) return false;
+            else if (obj is Item)
+            {
+                Item other = (Item)obj;
+                return (this.code == other.code);
+            }
+            else return false;
         }
 
         /// <summary>
