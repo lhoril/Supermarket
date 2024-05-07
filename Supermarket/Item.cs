@@ -49,6 +49,11 @@ namespace Supermarket
             }
         }
 
+        public double Stock
+        {
+            get { return stock; }
+        }
+
         public override string ToString()
         {
             string Message = "";
