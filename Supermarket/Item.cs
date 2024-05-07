@@ -57,11 +57,16 @@ namespace Supermarket
             return Message;
         }
 
-
+        /// <summary>
+        /// COMPARA LA DIFERENCIA DEL STOCK DONAT AMB EL STOCK ACTUAL
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>DIFERENCIA DEL VALOR DONAT I VALOR ACTUAL</returns>
         public int CompareTo(Item? other)
         {
+            if (other == null) throw new ArgumentNullException("NO POT SER NULL !!!");
             double resultat = 0;
-            resultat = other.Price - this.Price;
+            resultat = other.stock - this.stock;
             return (int)resultat;
         }
     }
