@@ -41,6 +41,11 @@ namespace Supermarket
 
             Console.WriteLine("------------------------------");
             Suppermarket supermarket = new Suppermarket("Supermarket", "123 Main", "CASHIERS.csv", "CUSTOMERS.csv", "GROCERIES.csv", 3);
+            SortedSet<Item> items = supermarket.GetItemsByStock();
+            foreach (Item item in items)
+            {
+                Console.WriteLine(item.ToString());
+            }
         }
     }
 }
