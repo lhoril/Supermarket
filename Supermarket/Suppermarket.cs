@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,6 +67,7 @@ namespace Supermarket
         private SortedDictionary<int, Item> LoadWarehouse(string fileName) 
         {
             StreamReader sr = new StreamReader (fileName);
+            Random random = new Random();
             SortedDictionary<int, Item> items = new SortedDictionary<int, Item>();
             string line;
             line = sr.ReadLine();
@@ -75,7 +77,7 @@ namespace Supermarket
             {
                 camps = line.Split(";");
                 line = sr.ReadLine();
-                Item item = new Item(num, camps[0], false, Convert.ToDouble(camps[3]), Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), 14, 10);
+                Item item = new Item(num, camps[0], false, Convert.ToDouble(camps[3]), Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), random.Next(11, 300) , 10);
                 num++;
                 items.Add(num, item);
             }
@@ -87,7 +89,10 @@ namespace Supermarket
         public SortedSet<Item> GetItemsByStock()
         {
             SortedSet<Item> items = new SortedSet<Item>();
-            items.OrderBy();
+            foreach (KeyValuePair <int, Item> key in warehouse)
+            {
+                items.Add(key.Value);
+            }
             return items;
         }
 

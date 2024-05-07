@@ -57,9 +57,14 @@ namespace Supermarket
         public override string ToString()
         {
             string Message = "";
-            if (onSale) Message = $"CODE ->{code} DESCRIPTION ->{description} CATEGORY -> {category} STOCK ->{stock} MIN_STOCK ->{minStock} PRICE ->{price} {currency} ON SALE ->Y{Price}";
-            else Message = Message = $"CODE ->{code} DESCRIPTION ->{description} CATEGORY -> {category} STOCK ->{stock} MIN_STOCK ->{minStock} PRICE ->{price} {currency} ON SALE ->N";
+            if (onSale) Message = $"CODE ->{code} DESCRIPTION ->{description} CATEGORY -> {category} STOCK ->{stock} \n MIN_STOCK ->{minStock} PRICE ->{price} {currency} ON SALE ->Y{Price}";
+            else Message = Message = $"CODE ->{code} DESCRIPTION ->{description} CATEGORY -> {category} STOCK ->{stock} \n MIN_STOCK ->{minStock} PRICE ->{price} {currency} ON SALE ->N";
             return Message;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return base.Equals(obj);
         }
 
         /// <summary>
