@@ -44,7 +44,7 @@ namespace Supermarket
             return persones;
         }
 
-        private Dictionary<string, Person> LoadCustomers(string fileName) //ERROR
+        private Dictionary<string, Person> LoadCustomers(string fileName) 
         {
             StreamReader sr = new StreamReader(fileName);
             Dictionary<string, Person> persones = new Dictionary<string, Person>();
@@ -63,7 +63,7 @@ namespace Supermarket
             return persones;
         }
 
-        private SortedDictionary<int, Item> LoadWarehouse(string fileName) //ERROR
+        private SortedDictionary<int, Item> LoadWarehouse(string fileName) 
         {
             StreamReader sr = new StreamReader (fileName);
             SortedDictionary<int, Item> items = new SortedDictionary<int, Item>();
