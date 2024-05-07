@@ -10,7 +10,7 @@ namespace Supermarket
             //Console.WriteLine('\u20AC');
 
             Customer customer = new Customer("12345678A", "Benito Camela", 1234);
-            customer.AddPoints(50); 
+            customer.AddPoints(50);
 
             Cashier cashier = new Cashier("12345678B", "Elver Galarga", 1609459200);
             cashier.AddPoints(30); 

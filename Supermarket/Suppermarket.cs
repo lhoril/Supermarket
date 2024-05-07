@@ -86,6 +86,7 @@ namespace Supermarket
 
         #region Segona Part
 
+
         public SortedSet<Item> GetItemsByStock()
         {
             SortedSet<Item> items = new SortedSet<Item>();
@@ -95,6 +96,7 @@ namespace Supermarket
             }
             return items;
         }
+
 
         #endregion
     }

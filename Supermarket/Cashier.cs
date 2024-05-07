@@ -35,7 +35,7 @@ namespace Supermarket
 
         public override string ToString()
         {
-            return $"DNI/NIE -> {base._id} NOM -> {base.FullName} RATING -> {GetRating}   ANTIGUITAT -> {YearsOfService} VENDES -> {_totalInvoiced} " +
+            return $"DNI/NIE -> {base._id,10} NOM -> {base.FullName,10} RATING -> {GetRating}   ANTIGUITAT -> {YearsOfService} VENDES -> {_totalInvoiced} " +
                 $"PUNTS -> {_points} DISPONIBLE -> {base.ToString()}";
         }
     }
