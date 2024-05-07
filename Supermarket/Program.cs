@@ -6,7 +6,7 @@ namespace Supermarket
     {
         static void Main(string[] args)
         {
-            //Console.OutputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
             //Console.WriteLine('\u20AC');
 
             Customer customer = new Customer("12345678A", "Benito Camela", 1234);
