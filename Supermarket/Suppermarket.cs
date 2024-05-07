@@ -81,5 +81,16 @@ namespace Supermarket
             }
             return items;
         }
+
+        #region Segona Part
+
+        public SortedSet<Item> GetItemsByStock()
+        {
+            SortedSet<Item> items = new SortedSet<Item>();
+            items.OrderBy();
+            return items;
+        }
+
+        #endregion
     }
 }
