@@ -97,6 +97,21 @@ namespace Supermarket
             return items;
         }
 
+        public void GetAvailableCustomer()
+        {
+            Random random = new Random();
+            int numRand = random.Next(1, customer.Count);
+            Person[] person = customer.Values.ToArray();
+            person[numRand].Active = true;
+        }
+
+        public void GetAvailableCashier()
+        {
+            Random random = new Random();
+            int numRand = random.Next(1, customer.Count);
+            Person[] person = staff.Values.ToArray();
+            person[numRand].Active = true;
+        }
 
         #endregion
     }
