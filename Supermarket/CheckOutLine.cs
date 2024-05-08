@@ -15,6 +15,8 @@ namespace Supermarket
 
         public CheckOutLine(int num, string FileName, Person cashier, bool active)
         {
+            Customer customer = new Customer("1", "arnau", null);
+            DateTime dateOfPurchase = new DateTime();
             StreamReader sr = new StreamReader(FileName);
             queue = new Queue<ShoppingCart>();
             string line;
@@ -29,7 +31,7 @@ namespace Supermarket
                 camps = line.Split(';');
                 line = sr.ReadLine();
                 Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
-                this.queue.Append(new ShoppingCart(num, line));
+                this.queue.Append(new ShoppingCart(customer, dateOfPurchase));
             }
         }
     }
