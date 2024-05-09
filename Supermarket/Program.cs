@@ -11,9 +11,11 @@ namespace Supermarket
 
             Customer customer = new Customer("12345678A", "Benito Camela", 1234);
             customer.AddPoints(50);
+            customer.AddInvoiceAmount(10);
 
             Cashier cashier = new Cashier("12345678B", "Elver Galarga", 1609459200);
-            cashier.AddPoints(30); 
+            cashier.AddPoints(30);
+            cashier.AddInvoiceAmount(50);
 
             Console.WriteLine("Informació del client:");
             Console.WriteLine(customer.ToString());
