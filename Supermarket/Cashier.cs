@@ -24,7 +24,7 @@ namespace Supermarket
         {
             get {
                 DateTime dateNow = DateTime.Now;
-                TimeSpan Interval = _joiningDate - dateNow;
+                TimeSpan Interval = dateNow - _joiningDate;
                 return Interval.Days + (_totalInvoiced * 0.10); }
         }
 
