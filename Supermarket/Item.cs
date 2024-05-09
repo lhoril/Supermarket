@@ -19,9 +19,9 @@ namespace Supermarket
         private Category category;
         private Packaging packaging;
         private double stock;
-        private int minStock;
+        private double minStock;
 
-        public Item(int code, string description, bool onSale, double price, int category, char type, double stock, int minStock)
+        public Item(int code, string description, bool onSale, double price, int category, char type, double stock, double minStock)
         {
             if (stock <= minStock) throw new Exception("THE QUANTITY IN STOCK CAN'T BE EQUALS OR LOWEST OF MINSTOCK");
             this.code = code;
@@ -52,6 +52,31 @@ namespace Supermarket
         public double Stock
         {
             get { return stock; }
+        }
+
+        public string GetCategory
+        {
+            get { return $"{category}"; }
+        }
+
+        public double MinStock
+        {
+            get => minStock;
+        }
+
+        public string PackagingType
+        {
+            get { return $"{packaging}"; }
+        }
+
+        public bool OnSale
+        {
+            get {return onSale;}
+        }
+
+        public string Description
+        {
+            get { return description; }
         }
 
         public override string ToString()
