@@ -10,14 +10,14 @@ namespace Supermarket
     {
         private DateTime _joiningDate;
 
-        public Cashier(string id, string fullName, long date) : base(id, fullName)
+        public Cashier(string id, string fullName, string date) : base(id, fullName)
         {
-            _joiningDate = new DateTime(date);
+            _joiningDate = DateTime.Parse(date);
         }
 
         public int YearsOfService
         {
-            get { return _joiningDate.Year; }
+            get { return DateTime.Now.Year - _joiningDate.Year; }
         }
 
         public override double GetRating

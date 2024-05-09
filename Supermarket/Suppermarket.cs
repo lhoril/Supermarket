@@ -38,7 +38,7 @@ namespace Supermarket
             while (line != null)
             {
                 camps = line.Split(';');
-                Person person = new Cashier(camps[0], camps[1], Convert.ToInt32(camps[2]));
+                Person person = new Cashier(camps[0], camps[1], camps[3]);
                 persones.Add(camps[0],person);
                 line = sr.ReadLine();
             }

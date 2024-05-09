@@ -13,7 +13,8 @@ namespace Supermarket
             customer.AddPoints(50);
             customer.AddInvoiceAmount(10);
 
-            Cashier cashier = new Cashier("12345678B", "Elver Galarga", 1609459200);
+            //1609459200
+            Cashier cashier = new Cashier("12345678B", "Elver Galarga", "01/02/2015 0:00:00");
             cashier.AddPoints(30);
             cashier.AddInvoiceAmount(50);
 
