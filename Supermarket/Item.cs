@@ -34,11 +34,6 @@ namespace Supermarket
             this.minStock = minStock;
         }
 
-        public static void UpdateStock(Item item, double qty)
-        {
-            item.stock = qty;
-        }
-
         public double Price
         {
             get
@@ -77,6 +72,11 @@ namespace Supermarket
         public string Description
         {
             get { return description; }
+        }
+
+        public static void UpdateStock(Item item, double qty)
+        {
+            item.stock = qty;
         }
 
         public override string ToString()
