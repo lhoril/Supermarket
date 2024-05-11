@@ -28,6 +28,7 @@ namespace Supermarket
             this.warehouse = LoadWarehouse(fileItems);
         }
 
+
         private Dictionary<string, Person> LoadCashiers(string fileName)
         {
             StreamReader sr = new StreamReader(fileName);
@@ -86,6 +87,25 @@ namespace Supermarket
 
         #region Segona Part
 
+        public Dictionary<string, Person> Staff
+        {
+            get { return this.staff; }
+        }
+
+        public Dictionary<string, Person> Customer
+        {
+            get { return this.customer; }
+        }
+
+        public SortedDictionary<int, Item> Warehouse
+        {
+            get { return this.warehouse; }
+        }
+
+        public int ActiveLines
+        {
+            get { return this.activeLines; }
+        }
 
         public SortedSet<Item> GetItemsByStock()
         {

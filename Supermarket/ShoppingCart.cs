@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,7 +105,15 @@ namespace Supermarket
 
         public override string ToString()
         {
-            return base.ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("**********");
+            sb.Append($"INFO CARRITO DE COMPRA CLIENTE ->{customer.FullName}");
+            foreach  (KeyValuePair<Item, double> key in shoppingList)
+            {
+                sb.Append($"{key.Key.Description,10} - CAT-->{key.Key.GetCategory,10} - QTY-->{key.Key.Stock,10} - UNIT PRICE-->{key.Key.Price,10} €");
+            }
+            sb.Append("*****FI CARRITO COMPRA*****");
+            return sb.ToString();
         }
 
 
