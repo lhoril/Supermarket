@@ -79,7 +79,8 @@ namespace Supermarket
             {
                 sb.Append($"NUMERO DE CAIXA --> {i}");
                 sb.Append($"CAIXER/A AL CÀRREC --> {cashier}");
-                sb.Append(carts[i].ToString());
+                if(queue == null) sb.Append("CUA BUIDA");
+                else sb.Append(carts[i].ToString());
             }
             return sb.ToString();
         }
