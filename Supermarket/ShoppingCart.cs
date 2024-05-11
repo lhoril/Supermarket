@@ -51,24 +51,60 @@ namespace Supermarket
             //shoppingList.Add(producte, num);
         }
 
-        public void AddOne(Item item, double qty)
+        public void AddOne(Item item, double qty)//REVISAR
         {
+            if(item.Stock < qty)
+            {
+                qty = item.Stock;
+            }
 
+            if (item.PackagingType == "Unit" && item.PackagingType == "Package")
+            {                
+                shoppingList.Add(item, Math.Truncate(qty));
+            }
+            else //AQUI SÓN KG
+            {
+                shoppingList.Add(item, qty);
+            }
+            
         }
 
         public void AddAllRandomly(SortedDictionary<int, Item> warehouse)
         {
-
+            int rndItem = 0;
+            int qty = 0;
+            int nVoltes= 0;
+            Random rnd = new Random();
+            nVoltes = rnd.Next(1, 11);
+            Item[] items = warehouse.Values.ToArray(); //CREEM UNA ARRAY A PARTIR D'UN DICCIONARI
+            for (int i = 0; i < nVoltes; i++)
+            {
+                rndItem = rnd.Next(1, warehouse.Count);
+                qty = rnd.Next(1, 6);
+                AddOne(items[rndItem],qty);
+            }
         }
 
         public int RawPointsObtainedAtCheckout(double totalInvoiced)
         {
-            return 0;
+            double punts=0;
+            if (totalInvoiced >=100)
+            {
+                punts = Math.Truncate(totalInvoiced * 0.1);
+            }
+
+            return (int)punts;
         }
 
         public static double ProcessItems(ShoppingCart cart)
         {
+
             return 0;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
 
 
