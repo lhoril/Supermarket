@@ -135,15 +135,52 @@ namespace Supermarket
 
         public void OpenCheckOutLine(int line20pen)
         {
+            if (activeLines - 1 == MAXLINES) throw new Exception("El numero de ActiveLines esta al Maxim");
             activeLines += 1;
         }
 
         public CheckOutLine GetCheckOutLine(int lineNumber)
         {
             if (lineNumber > 5) throw new Exception("El numero de liniea supera el numero de caixes");
-            if (lines[lineNumber-1] == null) throw new ArgumentNullException("");
+            if (lines[lineNumber-1] == null) throw new ArgumentNullException("La fila es buida");
+            return lines[lineNumber-1];
         }
 
+        public bool JoinTheQueue(ShoppingCart theCart, int line)
+        {
+            bool isValid;
+            if (activeLines >= line)
+            {
+                lines[line].CheckIn(theCart);
+                isValid = true;
+            }
+            else isValid = false;
+            return isValid;
+        }
+
+        public bool Checkout(int line)
+        {
+            bool isValid;
+            if(activeLines >= line)
+            {
+                lines[line].CheckOut();
+                isValid = true;
+            }
+            else isValid = false;
+            return isValid;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(name);
+            sb.Append(address);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                sb.Append(lines[i].ToString());
+            }
+            return sb.ToString();
+        }
         #endregion
     }
 }
