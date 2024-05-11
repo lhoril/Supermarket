@@ -73,5 +73,18 @@ namespace Supermarket
             }
             return active;
         }
+
+        public override string ToString()
+        {
+            ShoppingCart[] carts = queue.ToArray();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < carts.Length; i++)
+            {
+                sb.Append($"NUMERO DE CAIXA --> {i}");
+                sb.Append($"CAIXER/A AL CÀRREC --> {cashier}");
+                sb.Append(carts[i].ToString());
+            }
+            return sb.ToString();
+        }
     }
 }
