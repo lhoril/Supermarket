@@ -133,7 +133,16 @@ namespace Supermarket
             person[numRand].Active = true;
         }
 
+        public void OpenCheckOutLine(int line20pen)
+        {
+            activeLines += 1;
+        }
 
+        public CheckOutLine GetCheckOutLine(int lineNumber)
+        {
+            if (lineNumber > 5) throw new Exception("El numero de liniea supera el numero de caixes");
+            if (lines[lineNumber-1] == null) throw new ArgumentNullException("");
+        }
 
         #endregion
     }
