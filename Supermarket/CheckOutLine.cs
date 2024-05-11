@@ -59,10 +59,7 @@ namespace Supermarket
             {
                 ShoppingCart[] carts = queue.ToArray();
                 ShoppingCart tmp = carts[0];
-                foreach (KeyValuePair<Item, double> key in tmp.ShoppingList)
-                {
-                    numImport += key.Key.Price;
-                }
+                numImport = ShoppingCart.ProcessItems(tmp);
                 punts = tmp.RawPointsObtainedAtCheckout(numImport);
                 tmp.Customer.AddInvoiceAmount(numImport);
                 tmp.Customer.AddPoints(punts);
