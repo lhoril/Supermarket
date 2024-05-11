@@ -133,6 +133,8 @@ namespace Supermarket
             person[numRand].Active = true;
         }
 
+
+
         #endregion
     }
 }
