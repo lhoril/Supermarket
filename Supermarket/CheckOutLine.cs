@@ -54,6 +54,7 @@ namespace Supermarket
         public bool CheckOut()
         {
             double numImport = 0;
+            int punts;
             if(active && queue != null)
             {
                 ShoppingCart[] carts = queue.ToArray();
@@ -62,6 +63,12 @@ namespace Supermarket
                 {
                     numImport += key.Key.Price;
                 }
+                punts = tmp.RawPointsObtainedAtCheckout(numImport);
+                tmp.Customer.AddInvoiceAmount(numImport);
+                tmp.Customer.AddPoints(punts);
+                cashier.AddInvoiceAmount(numImport);
+                cashier.AddPoints(punts);
+                tmp.Customer.Active = false;
                 queue.Dequeue();
             }
             return active;
