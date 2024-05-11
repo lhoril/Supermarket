@@ -13,26 +13,58 @@ namespace Supermarket
         private Person cashier;
         private bool active;
 
-        public CheckOutLine(int num, string FileName, Person cashier, bool active)
+        //public CheckOutLine(int num, string FileName, Person cashier, bool active)
+        //{
+        //    Customer customer = new Customer("1", "arnau", null);
+        //    DateTime dateOfPurchase = new DateTime();
+        //    StreamReader sr = new StreamReader(FileName);
+        //    queue = new Queue<ShoppingCart>();
+        //    string line;
+        //    line = sr.ReadLine();
+        //    string[] camps;
+        //    this.number = num;
+        //    this.cashier = cashier;
+        //    this.active = active;
+        //    while (line != null)
+        //    {
+        //        num++;
+        //        camps = line.Split(';');
+        //        line = sr.ReadLine();
+        //        Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
+        //        this.queue.Append(new ShoppingCart(customer, dateOfPurchase));
+        //    }
+        //}
+
+        public CheckOutLine(Person responsable, int number)
         {
-            Customer customer = new Customer("1", "arnau", null);
-            DateTime dateOfPurchase = new DateTime();
-            StreamReader sr = new StreamReader(FileName);
             queue = new Queue<ShoppingCart>();
-            string line;
-            line = sr.ReadLine();
-            string[] camps;
-            this.number = num;
-            this.cashier = cashier;
-            this.active = active;
-            while (line != null)
+            this.number = number;
+            this.cashier = responsable;
+        }
+
+        public bool CheckIn(ShoppingCart oneShoppintCart)
+        {
+            if (active)
             {
-                num++;
-                camps = line.Split(';');
-                line = sr.ReadLine();
-                Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
-                this.queue.Append(new ShoppingCart(customer, dateOfPurchase));
+                queue.Enqueue(oneShoppintCart);
             }
+            return active;
+        }
+
+        public bool CheckOut()
+        {
+            double numImport = 0;
+            if(active && queue != null)
+            {
+                ShoppingCart[] carts = queue.ToArray();
+                ShoppingCart tmp = carts[0];
+                foreach (KeyValuePair<Item, double> key in tmp.ShoppingList)
+                {
+                    numImport += key.Key.Price;
+                }
+                queue.Dequeue();
+            }
+            return active;
         }
     }
 }
