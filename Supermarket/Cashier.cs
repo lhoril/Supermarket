@@ -17,7 +17,11 @@ namespace Supermarket
 
         public int YearsOfService
         {
-            get { return DateTime.Now.Year - _joiningDate.Year; }
+            get
+            {
+                TimeSpan Interval = DateTime.Now - _joiningDate;
+                return Interval.Days / 365;
+            }
         }
 
         public override double GetRating
