@@ -76,7 +76,7 @@ namespace Supermarket
 
         public static void UpdateStock(Item item, double qty)
         {
-            item.stock = qty;
+            item.stock += qty;
         }
 
         public override string ToString()
