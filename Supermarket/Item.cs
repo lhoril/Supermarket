@@ -107,7 +107,7 @@ namespace Supermarket
         {
             if (other == null) throw new ArgumentNullException("NO POT SER NULL !!!");
             double resultat = 0;
-            resultat = other.stock - this.stock;
+            resultat = this.stock - other.stock;
             return (int)resultat;
         }
     }
