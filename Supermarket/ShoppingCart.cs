@@ -119,11 +119,11 @@ namespace Supermarket
         {
             StringBuilder sb = new StringBuilder();
             char onSale = ' ';
-            sb.Append("**");
+            sb.Append("*********");
             sb.Append($"INFO CARRITO DE COMPRA CLIENTE ->{customer.FullName}");
             foreach (KeyValuePair<Item, double> key in shoppingList)
             {
-                if (key.Key.OnSale) onSale = ' ';
+                if (key.Key.OnSale) onSale = '*';
                 sb.Append($"{key.Key.Description,10} - CAT-->{key.Key.GetCategory,10} - QTY-->{key.Key.Stock,10} - UNIT PRICE-->{key.Key.Price,10} € ({onSale})");
             }
             sb.Append("*****FI CARRITO COMPRA*****");
