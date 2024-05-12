@@ -58,14 +58,14 @@ namespace Supermarket
             if(active && queue != null)
             {
                 ShoppingCart[] carts = queue.ToArray();
-                ShoppingCart tmp = carts[0];
-                numImport = ShoppingCart.ProcessItems(tmp);
-                punts = tmp.RawPointsObtainedAtCheckout(numImport);
-                tmp.Customer.AddInvoiceAmount(numImport);
-                tmp.Customer.AddPoints(punts);
+                ShoppingCart temporal = carts[0];
+                numImport = ShoppingCart.ProcessItems(temporal);
+                punts = temporal.RawPointsObtainedAtCheckout(numImport);
+                temporal.Customer.AddInvoiceAmount(numImport);
+                temporal.Customer.AddPoints(punts);
                 cashier.AddInvoiceAmount(numImport);
                 cashier.AddPoints(punts);
-                tmp.Customer.Active = false;
+                temporal.Customer.Active = false;
                 queue.Dequeue();
             }
             return active;
