@@ -61,11 +61,13 @@ namespace Supermarket
 
             if (item.PackagingType == "Unit" && item.PackagingType == "Package")
             {
-                if(!shoppingList.Keys.Contains(item))shoppingList.Add(item, Math.Truncate(qty));
+                if(!shoppingList.Keys.Contains(item))
+                    shoppingList.Add(item, Math.Truncate(qty));
             }
             else //AQUI SÓN KG
             {
-                if (!shoppingList.Keys.Contains(item)) shoppingList.Add(item, qty);
+                if (!shoppingList.Keys.Contains(item)) 
+                    shoppingList.Add(item, qty);
             }
             
         }
