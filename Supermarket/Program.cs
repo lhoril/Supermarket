@@ -128,6 +128,12 @@ namespace Supermarket
         public static void DoAfegirUnArticleAlCarro(Dictionary<Customer, ShoppingCart> carros, Suppermarket super)
         {
             Console.Clear();
+            Random rnd = new Random();
+            CheckOutLine cua;
+            int rndCarro;
+            cua = super.GetCheckOutLine(rnd.Next(0, super.ActiveLines));
+            carros.Add(cua);
+
             MsgNextScreen("PREM UNA TECLA PER ANAR AL MENÚ PRINCIPAL");
 
         }
