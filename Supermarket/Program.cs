@@ -22,7 +22,7 @@ namespace Supermarket
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            Suppermarket super = new Suppermarket("HIPERCAR", "C/Barna 99", "CASHIERS.TXT", "CUSTOMERS.TXT", "GROCERIES.TXT", 2);
+            Suppermarket super = new Suppermarket("HIPERCAR", "C/Barna 99", "CASHIERS.csv", "CUSTOMERS.csv", "GROCERIES.csv", 2);
             //
             Dictionary<Customer, ShoppingCart> carrosPassejant = new Dictionary<Customer, ShoppingCart>();
 
@@ -103,7 +103,14 @@ namespace Supermarket
         public static void DoNewShoppingCart(Dictionary<Customer, ShoppingCart> carros, Suppermarket super)
         {
             Console.Clear();
-
+            Random rand = new Random();
+            Person[] customers = super.Customer.Values.ToArray();
+            ShoppingCart cart;
+            int num = rand.Next(0, customers.Length);
+            customers[num].Active = true;
+            cart = new ShoppingCart((Customer)customers[num], DateTime.Now);
+            cart.AddAllRandomly(super.Warehouse);
+            super.JoinTheQueue(cart, rand.Next(0, super.ActiveLines));
             MsgNextScreen("PREM UNA TECLA PER ANAR AL MENÚ PRINCIPAL");
         }
 
