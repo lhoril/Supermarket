@@ -107,9 +107,9 @@ namespace Supermarket
             get { return this.activeLines; }
         }
 
-        public SortedSet<Item> GetItemsByStock()
+        public HashSet<Item> GetItemsByStock()
         {
-            SortedSet<Item> items = new SortedSet<Item>();
+            HashSet<Item> items = new HashSet<Item>();
             foreach (KeyValuePair <int, Item> key in warehouse)
             {
                 items.Add(key.Value);

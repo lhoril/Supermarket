@@ -70,7 +70,7 @@ namespace Supermarket
                         break;
 
                     case ConsoleKey.D9:
-                        SortedSet<Item> articlesOrdenatsPerEstoc = super.GetItemsByStock();
+                        HashSet<Item> articlesOrdenatsPerEstoc = super.GetItemsByStock();
                         DoListArticlesByStock("LLISTAT D'ARTICLES - DATA " + DateTime.Now, articlesOrdenatsPerEstoc);
 
                         break;
@@ -233,7 +233,7 @@ namespace Supermarket
         /// </summary>
         /// <param name="header">Text de capçalera del llistat</param>
         /// <param name="items">articles que ja vindran preparats en la ordenació desitjada</param>
-        public static void DoListArticlesByStock(String header, SortedSet<Item> items)
+        public static void DoListArticlesByStock(String header, HashSet<Item> items)
         {
             Console.Clear();
             Console.WriteLine(header);
