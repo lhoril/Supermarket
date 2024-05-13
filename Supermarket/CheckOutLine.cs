@@ -40,6 +40,7 @@ namespace Supermarket
             queue = new Queue<ShoppingCart>();
             this.number = number;
             this.cashier = responsable;
+            active = true;
         }
 
         public bool CheckIn(ShoppingCart oneShoppintCart)
@@ -77,10 +78,10 @@ namespace Supermarket
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < carts.Length; i++)
             {
-                sb.Append($"NUMERO DE CAIXA --> {i}");
-                sb.Append($"CAIXER/A AL CÀRREC --> {cashier}");
-                if(queue == null) sb.Append("CUA BUIDA");
-                else sb.Append(carts[i].ToString());
+                sb.AppendLine($"NUMERO DE CAIXA --> {i}");
+                sb.AppendLine($"CAIXER/A AL CÀRREC --> {cashier}");
+                if(queue == null) sb.AppendLine("CUA BUIDA");
+                else sb.AppendLine(carts[i].ToString());
             }
             return sb.ToString();
         }

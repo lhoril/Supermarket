@@ -91,7 +91,7 @@ namespace Supermarket
         public int RawPointsObtainedAtCheckout(double totalInvoiced)
         {
             double punts=0;
-            if (totalInvoiced >=100)
+            if (totalInvoiced >=20)
             {
                 punts = Math.Truncate(totalInvoiced * 0.1);
             }
@@ -112,7 +112,7 @@ namespace Supermarket
                 
                 Item.UpdateStock(obj.Key, qty-obj.Key.Stock); //DISMINUIM STOCK  
 
-                preuTotalItem = obj.Key.Price * qty;                
+                preuTotalItem += obj.Key.Price * qty;                
             }
             return Math.Round(preuTotalItem,2);
         }
@@ -121,12 +121,12 @@ namespace Supermarket
         {
             StringBuilder sb = new StringBuilder();
             char onSale = ' ';
-            sb.Append("*********");
-            sb.Append($"INFO CARRITO DE COMPRA CLIENTE ->{customer.FullName}");
+            sb.AppendLine("*********");
+            sb.AppendLine($"INFO CARRITO DE COMPRA CLIENTE ->{customer.FullName}");
             foreach (KeyValuePair<Item, double> key in shoppingList)
             {
                 if (key.Key.OnSale) onSale = '*'; //Si te estrelleta te descompte
-                sb.Append($"{key.Key.Description,10} - CAT-->{key.Key.GetCategory,10} - QTY-->{key.Key.Stock,10} - UNIT PRICE-->{key.Key.Price,10} € ({onSale})");
+                sb.AppendLine($"{key.Key.Description,10} - CAT-->{key.Key.GetCategory,10} - QTY-->{key.Key.Stock,10} - UNIT PRICE-->{key.Key.Price,10} € ({onSale})");
             }
             sb.Append("*****FI CARRITO COMPRA*****");
             return sb.ToString();
