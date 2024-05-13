@@ -136,14 +136,16 @@ namespace Supermarket
         public void OpenCheckOutLine(int line20pen)
         {
             if (activeLines - 1 == MAXLINES) throw new Exception("El numero de ActiveLines esta al Maxim");
-            activeLines += 1;
+            activeLines = line20pen;
         }
 
         public CheckOutLine GetCheckOutLine(int lineNumber)
         {
-            if (lineNumber > 5) throw new Exception("El numero de liniea supera el numero de caixes");
-            if (lines[lineNumber-1] == null) throw new ArgumentNullException("La fila es buida");
-            return lines[lineNumber-1];
+            CheckOutLine cua;
+            if (lineNumber > 5) cua = null;
+            else if (lines[lineNumber-1] == null) cua = null;
+            else cua = lines[lineNumber-1];
+            return cua;
         }
 
         public bool JoinTheQueue(ShoppingCart theCart, int line)
@@ -153,6 +155,7 @@ namespace Supermarket
             {
                 Random rand = new Random();
                 Person[] person = Staff.Values.ToArray();
+                person[rand.Next(0, person.Length)].Active = true; //Mirar si esta GOOD OIR NO TOMORROW..?
                 lines[line] = new CheckOutLine((Cashier)person[rand.Next(0,person.Length)], line);
                 lines[line].CheckIn(theCart);
                 isValid = true;
@@ -171,7 +174,7 @@ namespace Supermarket
             bool isValid;
             if(activeLines >= line)
             {
-                lines[line].CheckOut();
+                lines[line-1].CheckOut();
                 isValid = true;
             }
             else isValid = false;
@@ -181,11 +184,11 @@ namespace Supermarket
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(name);
-            sb.Append(address);
+            sb.AppendLine(name);
+            sb.AppendLine(address);
             for (int i = 0; i < lines.Length; i++)
             {
-                sb.Append(lines[i].ToString());
+                sb.AppendLine(lines[i].ToString());
             }
             return sb.ToString();
         }
