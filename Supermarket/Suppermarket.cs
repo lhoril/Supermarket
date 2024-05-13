@@ -149,7 +149,15 @@ namespace Supermarket
         public bool JoinTheQueue(ShoppingCart theCart, int line)
         {
             bool isValid;
-            if (activeLines >= line)
+            if (activeLines >= line && lines[line] == null)
+            {
+                Random rand = new Random();
+                Person[] person = Staff.Values.ToArray();
+                lines[line] = new CheckOutLine((Cashier)person[rand.Next(0,person.Length)], line);
+                lines[line].CheckIn(theCart);
+                isValid = true;
+            }
+            else if (activeLines >= line && lines[line] != null)
             {
                 lines[line].CheckIn(theCart);
                 isValid = true;
