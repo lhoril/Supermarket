@@ -22,10 +22,16 @@ namespace Supermarket
         {
             this.name = name;
             this.address = address;
-            this.activeLines = activeLines;
             this.staff = LoadCashiers(fileCashiers);
             this.customer = LoadCustomers(fileCustomers);
             this.warehouse = LoadWarehouse(fileItems);
+
+            for (int i = 0; i < activeLines; i++)
+            {
+                lines[i] = new CheckOutLine(GetAvailableCashier(), i);
+                if(activeLines < this.activeLines) this.activeLines = activeLines;
+            }
+
         }
 
 
@@ -123,20 +129,22 @@ namespace Supermarket
             return items;
         }
 
-        public void GetAvailableCustomer()
+        public Person GetAvailableCustomer()
         {
             Random random = new Random();
             int numRand = random.Next(1, customer.Count);
             Person[] person = customer.Values.ToArray();
             person[numRand].Active = true;
+            return person[numRand];
         }
 
-        public void GetAvailableCashier()
+        public Person GetAvailableCashier()
         {
             Random random = new Random();
-            int numRand = random.Next(1, customer.Count);
+            int numRand = random.Next(1, Staff.Count);
             Person[] person = staff.Values.ToArray();
             person[numRand].Active = true;
+            return person[numRand];
         }
 
         public void OpenCheckOutLine(int line20pen)
