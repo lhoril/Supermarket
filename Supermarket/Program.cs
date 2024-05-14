@@ -153,7 +153,7 @@ namespace Supermarket
         public static void DoCheckIn(Dictionary<Customer, ShoppingCart> carros, Suppermarket super)
         {
             Console.Clear();
-            if (carros == null) throw new ArgumentNullException("NO HI HA CAP CARRO PASSDEJANT");
+            if (carros.Count == 0) throw new ArgumentNullException("NO HI HA CAP CARRO PASSDEJANT");
             if(super.ActiveLines == 0) throw new ArgumentNullException("NO HI HA CAP LINIA DE PAGAMENT ACTIVA");
             Random rnd = new Random();
             int num = rnd.Next(0, carros.Count);
@@ -185,7 +185,7 @@ namespace Supermarket
             }
             else
             {
-                Console.WriteLine("CheckCout fet");
+                Console.WriteLine("ChecKout fet");
                 fet = true;
                 super.Checkout(num);
             }
@@ -305,7 +305,7 @@ namespace Supermarket
 
             for (int i = super.ActiveLines; i >= 1; i--)
             {
-                if (super.GetCheckOutLine(i) != null) Console.WriteLine(super.GetCheckOutLine(i).ToString());
+                if (super.GetCheckOutLine(i) == null) Console.WriteLine(super.GetCheckOutLine(i).ToString());
             }
 
             MsgNextScreen("PREM UNA TECLA PER CONTINUAR");
