@@ -224,7 +224,7 @@ namespace Supermarket
             Console.Clear();
             for (int i = 1; i <= super.ActiveLines; i++)
             {
-                if(super.GetCheckOutLine(i) != null) Console.WriteLine(super.GetCheckOutLine(i).ToString());
+                Console.WriteLine(super.GetCheckOutLine(i).ToString());
             }
             MsgNextScreen("PREM UNA TECLA PER CONTINUAR");
 
@@ -304,9 +304,9 @@ namespace Supermarket
         {
             Console.Clear();
 
-            for (int i = super.ActiveLines; i >= 1; i--)
+            for (int i = super.ActiveLines; i > 0; i--)
             {
-                if (super.GetCheckOutLine(i) == null) Console.WriteLine(Suppermarket.RemoveQueue(super, i));
+                Console.WriteLine(Suppermarket.RemoveQueue(super, i));
             }
 
             MsgNextScreen("PREM UNA TECLA PER CONTINUAR");

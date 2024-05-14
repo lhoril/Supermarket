@@ -29,7 +29,7 @@ namespace Supermarket
             for (int i = 0; i < activeLines; i++)
             {
                 lines[i] = new CheckOutLine(GetAvailableCashier(), i);
-                if(activeLines < this.activeLines) this.activeLines = activeLines;
+                if(activeLines <= MAXLINES) this.activeLines = activeLines;
             }
 
         }
@@ -132,7 +132,7 @@ namespace Supermarket
         public Person GetAvailableCustomer()
         {
             Random random = new Random();
-            int numRand = random.Next(1, customer.Count);
+            int numRand = random.Next(0, customer.Count);
             Person[] person = customer.Values.ToArray();
             person[numRand].Active = true;
             return person[numRand];
@@ -141,7 +141,7 @@ namespace Supermarket
         public Person GetAvailableCashier()
         {
             Random random = new Random();
-            int numRand = random.Next(1, Staff.Count);
+            int numRand = random.Next(0, Staff.Count);
             Person[] person = staff.Values.ToArray();
             person[numRand].Active = true;
             return person[numRand];
@@ -149,7 +149,8 @@ namespace Supermarket
 
         public void OpenCheckOutLine(int line20pen)
         {
-            if (activeLines - 1 == MAXLINES) throw new Exception("El numero de ActiveLines esta al Maxim");
+            if (activeLines == MAXLINES) throw new Exception("El numero de ActiveLines esta al Maxim");
+            lines[line20pen-1] = new CheckOutLine(GetAvailableCashier(), line20pen-1);
             activeLines = line20pen;
         }
 
@@ -165,16 +166,7 @@ namespace Supermarket
         public bool JoinTheQueue(ShoppingCart theCart, int line)
         {
             bool isValid;
-            if (activeLines >= line && lines[line] == null)
-            {
-                Random rand = new Random();
-                Person[] person = Staff.Values.ToArray();
-                person[rand.Next(0, person.Length)].Active = true; //Mirar si esta GOOD OIR NO TOMORROW...?
-                lines[line] = new CheckOutLine((Cashier)person[rand.Next(0,person.Length)], line);
-                lines[line].CheckIn(theCart);
-                isValid = true;
-            }
-            else if (activeLines >= line && lines[line] != null)
+            if (activeLines >= line && lines[line] != null)
             {
                 lines[line].CheckIn(theCart);
                 isValid = true;
@@ -198,11 +190,11 @@ namespace Supermarket
         public static bool RemoveQueue(Suppermarket super, int lineToRemove)
         {
             bool isRemove;
-            if (super.lines[lineToRemove] == null)
+            if (super.lines[lineToRemove-1].Empty)
             {
-                super.lines[lineToRemove].Casher.Active = false;
-                super.lines[lineToRemove] = default;
-                super.activeLines -= 1;
+                super.lines[lineToRemove-1].Casher.Active = false;
+                super.lines[lineToRemove-1] = default;
+                super.activeLines --;
                 isRemove = true;
             }
             else isRemove = false;
