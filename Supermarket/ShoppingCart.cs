@@ -52,7 +52,7 @@ namespace Supermarket
             //shoppingList.Add(producte, num);
         }
 
-        public void AddOne(Item item, double qty)//REVISAR
+        public void AddOne(Item item, double qty)
         {
             if(item.Stock < qty)
             {
