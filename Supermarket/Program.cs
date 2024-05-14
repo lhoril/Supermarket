@@ -305,7 +305,7 @@ namespace Supermarket
 
             for (int i = super.ActiveLines; i >= 1; i--)
             {
-                if (super.GetCheckOutLine(i) == null) Console.WriteLine(super.GetCheckOutLine(i).ToString());
+                if (super.GetCheckOutLine(i).Empty) Console.WriteLine(super.GetCheckOutLine(i).ToString());
             }
 
             MsgNextScreen("PREM UNA TECLA PER CONTINUAR");
