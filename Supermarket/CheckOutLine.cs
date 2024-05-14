@@ -13,28 +13,6 @@ namespace Supermarket
         private Person cashier;
         private bool active;
 
-        //public CheckOutLine(int num, string FileName, Person cashier, bool active)
-        //{
-        //    Customer customer = new Customer("1", "arnau", null);
-        //    DateTime dateOfPurchase = new DateTime();
-        //    StreamReader sr = new StreamReader(FileName);
-        //    queue = new Queue<ShoppingCart>();
-        //    string line;
-        //    line = sr.ReadLine();
-        //    string[] camps;
-        //    this.number = num;
-        //    this.cashier = cashier;
-        //    this.active = active;
-        //    while (line != null)
-        //    {
-        //        num++;
-        //        camps = line.Split(';');
-        //        line = sr.ReadLine();
-        //        Item producte = new Item(num, camps[0], false, 0, Convert.ToInt32(camps[1]), Convert.ToChar(camps[2]), Convert.ToDouble(camps[3]), Convert.ToInt32(camps[4]));
-        //        this.queue.Append(new ShoppingCart(customer, dateOfPurchase));
-        //    }
-        //}
-
         public CheckOutLine(Person responsable, int number)
         {
             queue = new Queue<ShoppingCart>();
@@ -66,17 +44,16 @@ namespace Supermarket
         {
             double numImport = 0;
             int punts;
-            if(active && queue != null)
+            if(active && queue.Count != 0)
             {
-                ShoppingCart[] carts = queue.ToArray();
-                ShoppingCart temporal = carts[0];
-                numImport = ShoppingCart.ProcessItems(temporal);
-                punts = temporal.RawPointsObtainedAtCheckout(numImport);
-                temporal.Customer.AddInvoiceAmount(numImport);
-                temporal.Customer.AddPoints(punts);
+                ShoppingCart carts = queue.ElementAt(0);
+                numImport = ShoppingCart.ProcessItems(queue.ElementAt(0));
+                punts = queue.ElementAt(0).RawPointsObtainedAtCheckout(numImport);
+                carts.Customer.AddInvoiceAmount(numImport);
+                carts.Customer.AddPoints(punts);
                 cashier.AddInvoiceAmount(numImport);
                 cashier.AddPoints(punts);
-                temporal.Customer.Active = false;
+                queue.ElementAt(0).Customer.Active = false;
                 queue.Dequeue();
             }
             return active;
@@ -86,13 +63,13 @@ namespace Supermarket
         {
             ShoppingCart[] carts = queue.ToArray();
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"NUMERO DE CAIXA --> {number}");
+            sb.AppendLine($"CAIXER/A AL CÀRREC --> {cashier.FullName}");
             for (int i = 0; i < carts.Length; i++)
             {
-                sb.AppendLine($"NUMERO DE CAIXA --> {i}");
-                sb.AppendLine($"CAIXER/A AL CÀRREC --> {cashier.FullName}");
-                if(queue == null) sb.AppendLine("CUA BUIDA");
-                else sb.AppendLine(carts[i].ToString());
+                sb.AppendLine(carts[i].ToString());
             }
+            if (queue.Count == 0) sb.AppendLine("CUA BUIDA");
             return sb.ToString();
         }
     }
