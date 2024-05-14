@@ -120,13 +120,13 @@ namespace Supermarket
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            char onSale = ' ';
+            string onSale = "";
             sb.AppendLine("*********");
             sb.AppendLine($"INFO CARRITO DE COMPRA CLIENTE ->{customer.FullName}");
             foreach (KeyValuePair<Item, double> key in shoppingList)
             {
-                if (key.Key.OnSale) onSale = '*'; //Si te estrelleta te descompte
-                sb.AppendLine($"{key.Key.Description,10} - CAT-->{key.Key.GetCategory,10} - QTY-->{key.Key.Stock,10} - UNIT PRICE-->{key.Key.Price,10} € ({onSale})");
+                if (key.Key.OnSale) onSale = "(*)"; //Si te estrelleta te descompte
+                sb.AppendLine($"{key.Key.Description,10} - CAT-->{key.Key.GetCategory,10} - QTY-->{key.Key.Stock,10} - UNIT PRICE-->{key.Key.Price,10} € {onSale}");
             }
             sb.Append("*****FI CARRITO COMPRA*****");
             return sb.ToString();

@@ -131,9 +131,10 @@ namespace Supermarket
             Console.Clear();
             Random rnd = new Random();
             Item[] elements = super.Warehouse.Values.ToArray();
-            Console.WriteLine(carros.ElementAt(rnd.Next(0, carros.Count)).Value.ToString());
-            carros.ElementAt(rnd.Next(0, carros.Count)).Value.AddOne(elements[rnd.Next(0, elements.Length)], rnd.Next(1, 20));
-            Console.WriteLine(carros.ElementAt(rnd.Next(0, carros.Count)).Value.ToString());
+            int num = rnd.Next(0, carros.Count);
+            Console.WriteLine(carros.ElementAt(num).Value.ToString());
+            carros.ElementAt(num).Value.AddOne(elements[rnd.Next(0, elements.Length)], rnd.Next(1, 20));
+            Console.WriteLine(carros.ElementAt(num).Value.ToString());
             MsgNextScreen("PREM UNA TECLA PER ANAR AL MENÚ PRINCIPAL");
 
         }
