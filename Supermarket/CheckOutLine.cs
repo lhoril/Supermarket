@@ -52,6 +52,11 @@ namespace Supermarket
             return active;
         }
 
+        public bool Empty
+        {
+            get { return queue.Count == 0; }
+        }
+
         public bool CheckOut()
         {
             double numImport = 0;

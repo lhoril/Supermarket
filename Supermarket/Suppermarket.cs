@@ -107,6 +107,12 @@ namespace Supermarket
             get { return this.activeLines; }
         }
 
+        public CheckOutLine[] Linies
+        {
+            get { return lines; }
+            set { lines = value; }
+        } 
+
         public HashSet<Item> GetItemsByStock()
         {
             HashSet<Item> items = new HashSet<Item>();
@@ -179,6 +185,19 @@ namespace Supermarket
             }
             else isValid = false;
             return isValid;
+        }
+
+        public static bool RemoveQueue(Suppermarket super, int lineToRemove)
+        {
+            bool isRemove;
+            if (super.lines[lineToRemove] == null)
+            {
+                super.lines[lineToRemove] = default;
+                super.activeLines -= 1;
+                isRemove = true;
+            }
+            else isRemove = false;
+            return isRemove;
         }
 
         public override string ToString()
