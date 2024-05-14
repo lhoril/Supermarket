@@ -158,7 +158,7 @@ namespace Supermarket
             if(super.ActiveLines == 0) throw new ArgumentNullException("NO HI HA CAP LINIA DE PAGAMENT ACTIVA");
             Random rnd = new Random();
             int num = rnd.Next(0, carros.Count);
-            super.JoinTheQueue(carros.ElementAt(num).Value, rnd.Next(1, super.ActiveLines));
+            super.JoinTheQueue(carros.ElementAt(num).Value, rnd.Next(0, super.ActiveLines));
             carros.Remove(carros.ElementAt(num).Key);
             MsgNextScreen("PREM UNA TECLA PER ANAR AL MENÚ PRINCIPAL");
         }
