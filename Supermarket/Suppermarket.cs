@@ -192,6 +192,7 @@ namespace Supermarket
             bool isRemove;
             if (super.lines[lineToRemove] == null)
             {
+                super.lines[lineToRemove].Casher.Active = false;
                 super.lines[lineToRemove] = default;
                 super.activeLines -= 1;
                 isRemove = true;

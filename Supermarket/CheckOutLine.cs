@@ -57,6 +57,11 @@ namespace Supermarket
             get { return queue.Count == 0; }
         }
 
+        public Person Casher
+        {
+            get { return this.cashier; }
+        }
+
         public bool CheckOut()
         {
             double numImport = 0;
