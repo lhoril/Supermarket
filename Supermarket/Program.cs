@@ -280,8 +280,11 @@ namespace Supermarket
         {
             Console.Clear();
             Console.WriteLine(header);
-
-
+            SortedSet<Item> i = new SortedSet<Item>(items);
+            foreach (Item item in i)
+            {
+                Console.WriteLine(item.ToString());
+            }
             MsgNextScreen("PREM UNA TECLA PER CONTINUAR");
         }
 
