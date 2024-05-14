@@ -303,6 +303,10 @@ namespace Supermarket
         {
             Console.Clear();
 
+            for (int i = super.ActiveLines; i >= 1; i--)
+            {
+                if (super.GetCheckOutLine(i) != null) Console.WriteLine(super.GetCheckOutLine(i).ToString());
+            }
 
             MsgNextScreen("PREM UNA TECLA PER CONTINUAR");
         }
