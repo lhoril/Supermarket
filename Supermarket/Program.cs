@@ -221,9 +221,9 @@ namespace Supermarket
         public static void DoInfoCues(Suppermarket super)
         {
             Console.Clear();
-            for (int i = 1; i < super.ActiveLines; i++)
+            for (int i = 1; i <= super.ActiveLines; i++)
             {
-                Console.WriteLine(super.GetCheckOutLine(i).ToString());
+                if(super.GetCheckOutLine(i) != null) Console.WriteLine(super.GetCheckOutLine(i).ToString());
             }
             MsgNextScreen("PREM UNA TECLA PER CONTINUAR");
 
