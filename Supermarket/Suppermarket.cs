@@ -155,7 +155,7 @@ namespace Supermarket
             {
                 Random rand = new Random();
                 Person[] person = Staff.Values.ToArray();
-                person[rand.Next(0, person.Length)].Active = true; //Mirar si esta GOOD OIR NO TOMORROW..?
+                person[rand.Next(0, person.Length)].Active = true; //Mirar si esta GOOD OIR NO TOMORROW...?
                 lines[line] = new CheckOutLine((Cashier)person[rand.Next(0,person.Length)], line);
                 lines[line].CheckIn(theCart);
                 isValid = true;
