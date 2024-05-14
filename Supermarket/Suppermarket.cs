@@ -157,7 +157,7 @@ namespace Supermarket
         public CheckOutLine GetCheckOutLine(int lineNumber)
         {
             CheckOutLine cua;
-            if (lineNumber > MAXLINES) cua = null;
+            if (lineNumber < 1 && lineNumber > MAXLINES) cua = null;
             else if (lines[lineNumber-1] == null) cua = null;
             else cua = lines[lineNumber-1];
             return cua;
