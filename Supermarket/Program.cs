@@ -111,7 +111,8 @@ namespace Supermarket
             customers[num].Active = true;
             cart = new ShoppingCart((Customer)customers[num], DateTime.Now);
             cart.AddAllRandomly(super.Warehouse);
-            if (!carros.ContainsKey((Customer)customers[num]))carros.Add((Customer)customers[num], cart);
+            if (!carros.ContainsKey((Customer)customers[num]))
+                carros.Add((Customer)customers[num], cart);
             MsgNextScreen("PREM UNA TECLA PER ANAR AL MENÚ PRINCIPAL");
         }
 
@@ -126,7 +127,7 @@ namespace Supermarket
         /// <param name="carros">Llista de carros que encara no han entrat a cap 
         /// cua de pagament</param>
         /// <param name="super">necessari per poder seleccionar un article del magatzem</param>
-        public static void DoAfegirUnArticleAlCarro(Dictionary<Customer, ShoppingCart> carros, Suppermarket super)
+        public static void DoAfegirUnArticleAlCarro(Dictionary<Customer, ShoppingCart> carros, Suppermarket super) //REVISAR
         {
             Console.Clear();
             Random rnd = new Random();
