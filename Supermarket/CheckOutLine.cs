@@ -46,7 +46,7 @@ namespace Supermarket
             int punts;
             if(active && queue.Count != 0)
             {
-                ShoppingCart carts = queue.ElementAt(0);
+                ShoppingCart carts = queue.Dequeue();
                 numImport = ShoppingCart.ProcessItems(queue.ElementAt(0));
                 punts = queue.ElementAt(0).RawPointsObtainedAtCheckout(numImport);
                 carts.Customer.AddInvoiceAmount(numImport);
@@ -54,7 +54,6 @@ namespace Supermarket
                 cashier.AddInvoiceAmount(numImport);
                 cashier.AddPoints(punts);
                 queue.ElementAt(0).Customer.Active = false;
-                queue.Dequeue();
             }
             return active;
         }
