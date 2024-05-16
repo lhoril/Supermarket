@@ -133,9 +133,16 @@ namespace Supermarket
             Random rnd = new Random();
             Item[] elements = super.Warehouse.Values.ToArray();
             int num = rnd.Next(0, carros.Count);
-            Console.WriteLine(carros.ElementAt(num).Value.ToString());
-            carros.ElementAt(num).Value.AddOne(elements[rnd.Next(0, elements.Length)], rnd.Next(1, 20));
-            Console.WriteLine(carros.ElementAt(num).Value.ToString());
+            if (carros.Count > 0)
+            {
+                Console.WriteLine(carros.ElementAt(num).Value.ToString());
+                carros.ElementAt(num).Value.AddOne(elements[rnd.Next(0, elements.Length)], rnd.Next(1, 20));
+                Console.WriteLine(carros.ElementAt(num).Value.ToString());
+            }
+            else
+            {
+                Console.WriteLine("NO HI HA CAP CARRO VOLTANT");
+            }
             MsgNextScreen("PREM UNA TECLA PER ANAR AL MENÚ PRINCIPAL");
 
         }
